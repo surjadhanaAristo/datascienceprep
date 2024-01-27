@@ -1,5 +1,11 @@
 import json
 
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+
 def readJson(filepath):
     with open(filepath, 'r') as f:
         data = json.load(f)
@@ -109,20 +115,50 @@ def commonSub(str1, str2):
             ind = 0
         counter += 1
     return size
+def printInOrder(root):
+    if(root):
+        printInOrder(root.left)
+        print(root.val)
+        printInOrder(root.right)
+    return
+def printInPreorder(root):
+    if(root):
+        print(root.val)
+        printInPreorder(root.left)
+        printInPreorder(root.right)
+    return
+def printInPostorder(root):
+    if(root):
+        
+        printInPostorder(root.left)
+        printInPostorder(root.right)
+        print(root.val)
+    return
 
 
 
 
 def main():
     #readJson('/Users/asurj/Documents/GitHub/datascienceprep/MOCK_DATA.json')
-    arr = [3 ,5 ,9 , 2, 6, 4, 7, 2, 9, 1, 3, 6, 2, 8]
-    arr = mergeSort(arr)
+    
     str = "hellabcao"
     str2 = "mnhlabc"
     #print(increasingSub(str))
-    print(commonSub(str,str2))
+    #print(commonSub(str,str2))
     #print(arr)
+    
 
 
 if __name__ == "__main__":
     main()
+    root = Node(1)
+    root.left = Node(2)
+    root.right = Node(3)
+    root.left.left = Node(4)
+    root.left.right = Node(5)
+    arr = [3 ,5 ,9 , 2, 6, 4, 7, 2, 9, 1, 3, 6, 2, 8]
+    arr = mergeSort(arr)
+    #printInOrder(root)
+    #printInPreorder(root)
+    printInPostorder(root)
+    
