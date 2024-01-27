@@ -79,29 +79,36 @@ def increasingSub(str):
     return size
 def commonSub(str1, str2):
     size = [0, 0]
+    indices = []
     ind_1 = 0
     ind_2 = 0
     counter = 0
     flag = False
     for x in str2:
+        #print(x)
         try:
             if (str1.index(x) > 0):
-                ind_2 = str1.index1(x)
-                ind_1 = str1.index1(x)
+                ind_2 = str1.index(x)
+                ind_1 = str1.index(x)
                 count2 = counter
                 while (str2[counter] == str1[ind_2]):
+                    #print(str1[ind_2])
                     counter += 1
                     ind_2 += 1
+                    if (counter >= len(str2) or ind_2 >= len(str1)):
+                        break
                 counter = count2
                 if(ind_2 - ind_1 > size[1] - size[0]):
+                    #print("hi")
                     size[0] = ind_1
                     size[1] = ind_2
                     ind_1 = 0
                     ind_2 = 0
-            break
+            
         except ValueError:
             ind = 0
         counter += 1
+    return size
 
 
 
@@ -111,8 +118,10 @@ def main():
     arr = [3 ,5 ,9 , 2, 6, 4, 7, 2, 9, 1, 3, 6, 2, 8]
     arr = mergeSort(arr)
     str = "hellabcao"
-    print(increasingSub(str))
-    print(arr)
+    str2 = "mnhlabc"
+    #print(increasingSub(str))
+    print(commonSub(str,str2))
+    #print(arr)
 
 
 if __name__ == "__main__":
