@@ -134,6 +134,43 @@ def printInPostorder(root):
         printInPostorder(root.right)
         print(root.val)
     return
+def contSubarrays(arr, k):
+    ind_1 = 0
+    ind_2 = 0
+    size = 0
+    counter = 0
+    index = 0
+    for x in arr:
+        counter = counter + x
+        #print(counter)
+        if (counter == k):
+                counter = 0
+                size += 1
+                ind_2 = index
+                ind_1 = index
+        elif (counter > k):
+            counter = 0
+            ind_1 = index
+            ind_2 = index
+        index += 1
+        ind_2 += 1
+    return size
+def medianTwoArr(num1, num2):
+    c1 = 0
+    c2 = 0
+    even = False
+    odd = False
+    c_all = len(num1) + len(num2)
+
+    if(c_all % 2 == 0):
+        even = True
+    total_length = num1 + num2
+    flag = False
+    while(flag == False):
+        if (num1[c1] <= num2[c2]):
+
+    return
+
 
 
 
@@ -156,9 +193,11 @@ if __name__ == "__main__":
     root.right = Node(3)
     root.left.left = Node(4)
     root.left.right = Node(5)
-    arr = [3 ,5 ,9 , 2, 6, 4, 7, 2, 9, 1, 3, 6, 2, 8]
+    arr = [3, 5, 9, 2, 6, 4, 7, 2, 9, 1, 3, 6, 2, 8]
+    print(contSubarrays(arr, 8))
     arr = mergeSort(arr)
+    
     #printInOrder(root)
     #printInPreorder(root)
-    printInPostorder(root)
+    #printInPostorder(root)
     
